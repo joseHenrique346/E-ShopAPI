@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Persistence.EFCore.Entity.Base;
-using System.ComponentModel.DataAnnotations;
 
 namespace Infrastructure.Persistence.EFCore.Entity.Registration;
 
@@ -12,11 +11,12 @@ public class Product : BaseEntity
     public string Image { get; set; }
     public string? Observation { get; set; }
     public long BrandId { get; set; }
+    public long CategoryId { get; set; }
 
     #endregion
 
     #region Controllers
-    public Product(string code, string description, decimal price, string image, string? observation, long brandId)
+    public Product(string code, string description, decimal price, string image, string? observation, long brandId, long categoryId)
     {
         Code = code;
         Description = description;
@@ -24,6 +24,7 @@ public class Product : BaseEntity
         Image = image;
         Observation = observation;
         BrandId = brandId;
+        CategoryId = categoryId;
     }
 
     public Product() { }

@@ -1,84 +1,37 @@
 ﻿using Infrastructure.Persistence.EFCore.Entity.Base;
-using System.ComponentModel.DataAnnotations;
 
 namespace Infrastructure.Persistence.EFCore.Entity.Registration;
 
 public class Customer : BaseEntity
 {
     #region Properties
-    public string UserName { get; set; }
-    public string Email { get; set; }
-    public string Address { get; set; }
-    public string City { get; set; }
-    public string Region { get; set; }
-    public string PostalCode { get; set; }
-    public string Country { get; set; }
-    public string Phone { get; set; }
+    public string FirstName { get; private set; }
+    public string LastName { get; private set; }
+    public string Code { get; private set; }
+    public string Phone { get; private set; }
+    public DateOnly? BirthDate { get; private set; }
+    public string Document { get; private set; }
     #endregion
 
     #region Controllers
-    public Customer(string userName, string email, string address, string city, string region, string postalCode, string country, string phone)
+    public Customer(string firstName, string lastName, string code, string phone, DateOnly? birthDate, string document)
     {
-        UserName = userName;
-        Email = email;
-        Address = address;
-        City = city;
-        Region = region;
-        PostalCode = postalCode;
-        Country = country;
+        FirstName = firstName;
+        LastName = lastName;
+        Code = code;
         Phone = phone;
+        BirthDate = birthDate;
+        Document = document;
     }
 
     public Customer() { }
     #endregion
 
     #region Implicit Operators
-    // Conversão implícita de Customer para CustomerDto
-    //public static implicit operator CustomerDto(Customer customer)
-    //{
-    //    return new CustomerDto
-    //    {
-    //        Id = customer.Id,
-    //        UserName = customer.UserName,
-    //        Email = customer.Email,
-    //        Address = customer.Address,
-    //        City = customer.City,
-    //        Region = customer.Region,
-    //        PostalCode = customer.PostalCode,
-    //        Country = customer.Country,
-    //        Phone = customer.Phone
-    //    };
-    //}
 
-    // Conversão implícita de CustomerDto para Customer
-    //public static implicit operator Customer(CustomerDto dto)
-    //{
-    //    return new Customer
-    //    {
-    //        Id = dto.Id,
-    //        UserName = dto.UserName,
-    //        Email = dto.Email,
-    //        Address = dto.Address,
-    //        City = dto.City,
-    //        Region = dto.Region,
-    //        PostalCode = dto.PostalCode,
-    //        Country = dto.Country,
-    //        Phone = dto.Phone
-    //    };
-    //}
     #endregion
 
     #region Conversion Methods
-    // Converte a entidade atual em DTO
-    //public CustomerDto ToDto()
-    //{
-    //    return this;
-    //}
 
-    // Converte um DTO em entidade
-    //public static Customer ToEntry(CustomerDto dto)
-    //{
-    //    return dto;
-    //}
     #endregion
 }

@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Persistence.EFCore.Entity.Base;
-using System.ComponentModel.DataAnnotations;
 
 namespace Infrastructure.Persistence.EFCore.Entity.Registration;
 
@@ -11,7 +10,7 @@ public class Category : BaseEntity
     #endregion
 
     #region Mapping
-    public List<Brand> ListBrands { get; set; } = [];
+    public List<Product> ListProducts { get; set; } = [];
 
     #endregion
 
