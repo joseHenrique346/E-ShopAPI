@@ -1,5 +1,67 @@
-﻿namespace Infrastructure.Persistence.EFCore.Entity.Registration.Brand;
+﻿using Infrastructure.Persistence.EFCore.Entity.Base;
 
-internal class Brand
+namespace Infrastructure.Persistence.EFCore.Entity.Registration;
+
+public class Brand : BaseEntity
 {
+    #region Properties
+    public string Code { get; set; }
+    public string Description { get; set; }
+    #endregion
+
+    #region Mapping
+    public List<Product> ListProducts { get; set; } = [];
+
+    #endregion
+
+    #region Controllers
+
+    public Brand(string code, string description, List<Product> listProducts)
+    {
+        Code = code;
+        Description = description;
+        ListProducts = listProducts;
+    }
+
+    public Brand() { }
+
+    #endregion
+    #region Implicit Operators
+    // Conversão implícita de Brand para BrandDto
+    //public static implicit operator BrandDto(Brand brand)
+    //{
+    //    return new BrandDto
+    //    {
+    //        Id = brand.Id,
+    //        Code = brand.Code,
+    //        Description = brand.Description
+    //    };
+    //}
+
+    // Conversão implícita de BrandDto para Brand
+    //public static implicit operator Brand(BrandDto dto)
+    //{
+    //    return new Brand
+    //    {
+    //        Id = dto.Id,
+    //        Code = dto.Code,
+    //        Description = dto.Description
+    //    };
+    //}
+    #endregion
+
+    #region Conversion Methods
+    // Converte a entidade atual em DTO
+    //public BrandDto ToDto()
+    //{
+    //    return this;
+    //}
+
+    // Converte um DTO em entidade
+    //public static Brand ToEntry(BrandDto dto)
+    //{
+    //    return dto;
+    //}
+    #endregion
+
 }
