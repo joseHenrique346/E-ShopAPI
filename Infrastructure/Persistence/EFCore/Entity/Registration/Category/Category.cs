@@ -10,16 +10,16 @@ public class Category : BaseEntity
     #endregion
 
     #region Mapping
-    public List<Product> ListProducts { get; set; } = [];
+    public List<Product> ListProduct { get; set; } = [];
 
     #endregion
 
     #region Controllers
-    public Category(string code, string description, List<Product> listProducts)
+    public Category(string code, string description, List<Product> listProduct)
     {
         Code = code;
         Description = description;
-        ListProducts = listProducts;
+        ListProduct = listProduct;
     }
 
     public Category() { }

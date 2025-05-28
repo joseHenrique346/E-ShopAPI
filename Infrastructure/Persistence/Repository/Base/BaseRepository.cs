@@ -7,7 +7,7 @@ using Infrastructure.Persistence.EFCore.Context;
 using Infrastructure.Persistence.EFCore.Entity.Base;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistence.EFCore.Repository.Base
+namespace Infrastructure.Persistence.Repository.Base
 {
     public abstract class BaseRepository<TEntity, TDTO, TInputIdentityView> : IBaseRepository<TDTO, TInputIdentityView>
         where TEntity : BaseEntity, new()
@@ -38,7 +38,7 @@ namespace Infrastructure.Persistence.EFCore.Repository.Base
         public async Task<List<TDTO>> GetListByListId(List<long> listId)
         {
             var getListByListId = await _dbSet.Where(i => listId.Contains(i.Id)).AsNoTracking().ToListAsync();
-            return Conversor.GenericConvertList<TDTO, TEntity>(getListByListId);
+            return getListByListId.GenericConvertList<TDTO, TEntity>();
         }
 
         public async Task<TDTO?> GetById(TInputIdentityView? id)
@@ -53,7 +53,7 @@ namespace Infrastructure.Persistence.EFCore.Repository.Base
 
         public async Task<List<TDTO>> Create(List<TDTO> listDTO)
         {
-            List<TEntity> listEntity = Conversor.GenericConvertList<TEntity, TDTO>(listDTO);
+            List<TEntity> listEntity = listDTO.GenericConvertList<TEntity, TDTO>();
             _dbSet.AddRange(listEntity);
             await _context.SaveChangesAsync();
             return listEntity.GenericConvertList<TDTO, TEntity>();
@@ -65,7 +65,7 @@ namespace Infrastructure.Persistence.EFCore.Repository.Base
 
         public async Task<List<TDTO>> Update(List<TDTO> listDto)
         {
-            List<TEntity> listEntity = Conversor.GenericConvertList<TEntity, TDTO>(listDto);
+            List<TEntity> listEntity = listDto.GenericConvertList<TEntity, TDTO>();
 
             _dbSet.UpdateRange(listEntity);
             await _context.SaveChangesAsync();
@@ -78,7 +78,7 @@ namespace Infrastructure.Persistence.EFCore.Repository.Base
 
         public async Task<bool> Delete(List<TDTO> listDto)
         {
-            List<TEntity> listEntity = Conversor.GenericConvertList<TEntity, TDTO>(listDto);
+            List<TEntity> listEntity = listDto.GenericConvertList<TEntity, TDTO>();
             _dbSet.RemoveRange(listEntity);
             await _context.SaveChangesAsync();
             return true;

@@ -4,10 +4,10 @@ using Domain.DTO.Entity.Brand;
 using Domain.Interface.Repository;
 using Infrastructure.Persistence.EFCore.Context;
 using Infrastructure.Persistence.EFCore.Entity.Registration;
-using Infrastructure.Persistence.EFCore.Repository.Base;
+using Infrastructure.Persistence.Repository.Base;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistence.EFCore.Repository.Registration
+namespace Infrastructure.Persistence.Repository.Registration
 {
     public class BrandRepository : BaseRepository<Brand, BrandDTO, InputIdentityViewBrand>, IBrandRepository
     {

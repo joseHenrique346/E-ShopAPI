@@ -31,6 +31,11 @@ public class Product : BaseEntity
 
     #endregion
 
+    #region Mapping
+    public Brand Brand { get; set; }
+    public Category Category { get; set; }  
+    #endregion
+
     #region Implicit Operators
     // De Product para ProductDto
     //public static implicit operator ProductDto(Product product)

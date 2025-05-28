@@ -1,11 +1,11 @@
 ﻿using Arguments.Argument.Registration.Brand;
 using Domain.DTO.Entity.Brand;
 using Domain.Interface.Service.Brand;
+using E_StoreAPI.Controllers.Base;
 using Infrastructure.Persistence.EFCore.UnitOfWork.Interface;
 using Microsoft.AspNetCore.Mvc;
-using ProjetoTesteWebApiNovo.Controllers.Base;
 
-namespace ProjetoTesteWebApiNovo.Controllers.Registration
+namespace E_StoreAPI.Controllers.Registration
 {
     [ApiController]
     [Route("api/[controller]")]

@@ -9,7 +9,7 @@ using Domain.Service.Base;
 using Domain.Utils.Helper;
 using System.Reflection;
 
-namespace Domain.Service.Registration.CustomerService
+namespace Domain.Service.Registration.Customer
 {
     public class CustomerService : BaseService<CustomerDTO, ICustomerRepository, InputIdentityViewCustomer, InputCreateCustomer, InputUpdateCustomer, InputIdentityUpdateCustomer, InputIdentityDeleteCustomer, CustomerValidateDTO, OutputCustomer>, ICustomerService
     {
@@ -59,7 +59,7 @@ namespace Domain.Service.Registration.CustomerService
 
             await _repository.Create(newListCustomer);
 
-            return BaseResult<List<OutputCustomer>>.Success(Conversor.GenericConvertList<OutputCustomer, CustomerValidateDTO>(listNewCustomerValidateDTO), listNotification);
+            return BaseResult<List<OutputCustomer>>.Success(listNewCustomerValidateDTO.GenericConvertList<OutputCustomer, CustomerValidateDTO>(), listNotification);
         }
 
         public override async Task<BaseResult<List<OutputCustomer>>> UpdateMultiple(List<InputIdentityUpdateCustomer> listInputIdentityUpdateCustomer)
@@ -94,13 +94,13 @@ namespace Domain.Service.Registration.CustomerService
             var validListCustomer = (from i in RemoveInvalid(listNewCustomerValidateDTO) where !i.Invalid select i).ToList();
 
             (from i in validListCustomer
-             select UpdateDTO<CustomerDTO, InputUpdateCustomer>(i.OriginalCustomer, i.InputUpdate)).ToList();
+             select UpdateDTO(i.OriginalCustomer, i.InputUpdate)).ToList();
 
             var originalCustomerListToUpdate = validListCustomer.Select(i => i.OriginalCustomer).ToList();
 
             await _repository.Update(originalCustomerListToUpdate);
 
-            return BaseResult<List<OutputCustomer>>.Success(Conversor.GenericConvertList<OutputCustomer, CustomerDTO>(originalCustomerListToUpdate), listNotification);
+            return BaseResult<List<OutputCustomer>>.Success(originalCustomerListToUpdate.GenericConvertList<OutputCustomer, CustomerDTO>(), listNotification);
         }
 
         public override async Task<BaseResult<bool>> DeleteMultiple(List<InputIdentityDeleteCustomer> listInputIdentityDeleteCustomer)

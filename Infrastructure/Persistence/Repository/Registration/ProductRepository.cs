@@ -3,9 +3,9 @@ using Domain.DTO.Entity.Product;
 using Domain.Interface.Repository;
 using Infrastructure.Persistence.EFCore.Context;
 using Infrastructure.Persistence.EFCore.Entity.Registration;
-using Infrastructure.Persistence.EFCore.Repository.Base;
+using Infrastructure.Persistence.Repository.Base;
 
-namespace Infrastructure.Persistence.EFCore.Repository.Registration
+namespace Infrastructure.Persistence.Repository.Registration
 {
     public class ProductRepository(AppDbContext context) : BaseRepository<Product, ProductDTO, InputIdentityViewProduct>(context), IProductRepository { }
 }

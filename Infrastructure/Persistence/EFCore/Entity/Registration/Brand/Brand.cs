@@ -10,22 +10,23 @@ public class Brand : BaseEntity
     #endregion
 
     #region Mapping
-    public List<Product> ListProducts { get; set; } = [];
+    public List<Product> ListProduct { get; set; } = [];
 
     #endregion
 
     #region Controllers
 
-    public Brand(string code, string description, List<Product> listProducts)
+    public Brand(string code, string description, List<Product> listProduct)
     {
         Code = code;
         Description = description;
-        ListProducts = listProducts;
+        ListProduct = listProduct;
     }
 
     public Brand() { }
 
     #endregion
+
     #region Implicit Operators
     // Conversão implícita de Brand para BrandDto
     //public static implicit operator BrandDto(Brand brand)

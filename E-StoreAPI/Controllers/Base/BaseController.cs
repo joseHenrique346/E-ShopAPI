@@ -6,7 +6,7 @@ using Infrastructure.Persistence.EFCore.UnitOfWork.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace ProjetoTesteWebApiNovo.Controllers.Base
+namespace E_StoreAPI.Controllers.Base
 {
     public class BaseController<TService, TDTO, TOutput, TInputIdentityView, TInputCreate, TInputIdentityUpdate, TInputIdentityDelete> : Controller
         where TService : IBaseService<TDTO, TOutput, TInputIdentityView, TInputCreate, TInputIdentityUpdate, TInputIdentityDelete>
@@ -48,7 +48,7 @@ namespace ProjetoTesteWebApiNovo.Controllers.Base
         {
             var getAll = await _service.GetAll();
             if (getAll != null)
-                return Ok(Conversor.GenericConvertList<TOutput, TDTO>(getAll));
+                return Ok(getAll.GenericConvertList<TOutput, TDTO>());
             return BadRequest();
         }
 
@@ -57,7 +57,7 @@ namespace ProjetoTesteWebApiNovo.Controllers.Base
         {
             var getListByListId = await _service.GetListByListId(listInputIdentityView);
             if (getListByListId != null)
-                return Ok(Conversor.GenericConvertList<TOutput, TDTO>(getListByListId));
+                return Ok(getListByListId.GenericConvertList<TOutput, TDTO>());
             return BadRequest();
         }
 

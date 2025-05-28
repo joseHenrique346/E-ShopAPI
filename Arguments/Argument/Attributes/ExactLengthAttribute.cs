@@ -1,4 +1,4 @@
-﻿namespace Arguments.Arguments.Attributes;
+﻿namespace Arguments.Argument.Attributes;
 
 public class ExactLengthAttribute : Attribute
 {

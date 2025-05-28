@@ -1,4 +1,13 @@
+using E_StoreAPI.Extensions;
+using Infrastructure.Persistence.EFCore.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=app.db"));
+
+builder.Services.ConfigureInjectionDependency();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

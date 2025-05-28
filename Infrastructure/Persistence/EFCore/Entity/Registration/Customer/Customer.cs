@@ -5,12 +5,12 @@ namespace Infrastructure.Persistence.EFCore.Entity.Registration;
 public class Customer : BaseEntity
 {
     #region Properties
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
-    public string Code { get; private set; }
-    public string Phone { get; private set; }
-    public DateOnly? BirthDate { get; private set; }
-    public string Document { get; private set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Code { get; set; }
+    public string Phone { get; set; }
+    public DateOnly? BirthDate { get; set; }
+    public string Document { get; set; }
     #endregion
 
     #region Controllers

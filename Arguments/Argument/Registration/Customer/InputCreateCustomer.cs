@@ -1,5 +1,5 @@
-﻿using Arguments.Argument.Base.Crud;
-using Arguments.Arguments.Attributes;
+﻿using Arguments.Argument.Attributes;
+using Arguments.Argument.Base.Crud;
 using System.ComponentModel.DataAnnotations;
 
 namespace Arguments.Argument.Registration.Customer
