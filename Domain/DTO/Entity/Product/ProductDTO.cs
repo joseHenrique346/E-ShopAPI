@@ -21,6 +21,7 @@ namespace Domain.DTO.Entity.Product
         {
             Code = code;
             Description = description;
+            Price = price;
             Image = image;
             Observation = observation;
             BrandId = brandId;

@@ -30,11 +30,5 @@ namespace Domain.DTO.Entity.Customer
         public CustomerDTO() { }
 
         #endregion
-
-        #region Internal
-
-        public virtual List<CustomerAddressDTO> ListCustomerAddressDTO { get; set; }
-
-        #endregion
     }
 }

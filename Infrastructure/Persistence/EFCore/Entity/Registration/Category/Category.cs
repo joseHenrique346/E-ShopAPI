@@ -15,11 +15,11 @@ public class Category : BaseEntity
     #endregion
 
     #region Controllers
-    public Category(string code, string description, List<Brand> listBrands)
+    public Category(string code, string description, List<Product> listProducts)
     {
         Code = code;
         Description = description;
-        ListBrands = listBrands;
+        ListProducts = listProducts;
     }
 
     public Category() { }
