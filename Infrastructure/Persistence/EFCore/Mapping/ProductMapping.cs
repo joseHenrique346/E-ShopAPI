@@ -8,6 +8,8 @@ namespace Infrastructure.Persistence.EFCore.Mapping
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
+            builder.ToTable("produto");
+
             builder.HasKey(i => i.Id).HasName("id");
             builder.HasOne(i => i.Brand).WithMany(j => j.ListProduct).HasForeignKey(k => k.BrandId).HasConstraintName("fkey_id_marca");
             builder.HasOne(i => i.Category).WithMany(j => j.ListProduct).HasForeignKey(k => k.CategoryId).HasConstraintName("fkey_id_categoria");

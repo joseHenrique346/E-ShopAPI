@@ -8,6 +8,8 @@ namespace Infrastructure.Persistence.EFCore.Mapping
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
+            builder.ToTable("categoria");
+
             builder.HasKey(i => i.Id).HasName("id");
 
             builder.Property(i => i.Code).HasColumnName("código");
